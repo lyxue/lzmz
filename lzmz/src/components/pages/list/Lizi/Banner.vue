@@ -60,7 +60,7 @@
 	.banner{
 		.w(375);
 		.h(251);
-		.margin(90,8,0,8);
+		// .margin(8px,8px,4px,8px);
 		.swiper-slide{
 			display: inline-block;
 			img{

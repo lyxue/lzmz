@@ -2,13 +2,13 @@
 	<div class="slideDetail">
 	  <div class="swiper-container">
 	    <div class="swiper-wrapper">
-	      <div class="swiper-slide" >
-	      	<img :src="'https://images.weserv.nl/?url='+imgurl"> 
+	      <div class="swiper-slide" v-for="(item,index) in list" :key="index">
+	      	<img :src="'https://images.weserv.nl/?url='+item">
 	      </div>
 	    </div>
 	    <div class="swiper-pagination page"></div>
 	    <div class="title">
-	    	<p>{{title}}</p>
+	    	<p>{{name}}</p>
 	    	<i class="fa fa-star-o" aria-hidden="true"></i>
 	    </div>
 	  </div>
@@ -16,36 +16,56 @@
 </template>
 
 <script type="text/javascript">
+
 	import  Vue from 'vue';
 	import Swiper from 'swiper';
+
 	export default{
 		name:'slideDetail',
 		data(){
 			return {
 				list:[],
-				name:this.name,
-				imgurl:'',
-				title:''
+				name:this.name
 			}
 		},
 		methods:{
+			getData(){
+				let productId = this.$qs.stringify({
+				    id:2
+				});
+				this.$axios({
+				    method: 'post',
+				    url:'/api/goods/findById',
+				    data:productId
+				}).then((res)=>{
+					this.list = res.data.data[0].producturl;
+					this.name = res.data.data[0].name;
+				    // console.log(res.data.data[0].name);
+				    Vue.nextTick(()=>{
+				    	this.initSlide();
+				    })
+				    
+				
+				});
+			},
 			initSlide(){
-					var swiper = new Swiper('.swiper-container', {
-						loop: true,
-						pagination: {
-							el: '.swiper-pagination',
-							type: 'fraction',
-						}
-					})					
+			    var swiper = new Swiper('.swiper-container', {
+			      loop: true,
+			      pagination: {
+			        el: '.swiper-pagination',
+			        type: 'fraction',
+			      }
+			    })					
 			}		
 		},
 		created(){
-		    let img=this.$route.params.img;
-			let name=this.$route.params.title;
-			this.imgurl=img;
-			this.title=name;
+			this.getData();
 		}
+
+		
+
 	}
+
 </script>
 
 <style lang="less" scoped>
@@ -90,6 +110,7 @@
  				.padding(0,10,0,10);
  			}
  		} 
+
  		.page{
  			border-radius: 50%;
  			position:absolute;
@@ -102,5 +123,8 @@
  			top:5px;
  			left:5px;
  		}
+
  	}
+
+
 </style>

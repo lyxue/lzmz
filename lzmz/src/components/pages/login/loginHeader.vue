@@ -1,8 +1,8 @@
 <template>
-	<div class="loginHeader"> 
-		<div class="left" @click="goBack"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+	<div  class="loginHeader">
+		<div class="left" @click="goLogin"><i class="fa fa-arrow-left" aria-hidden="true"></i></i></div>
 		<div class="center">登录</div>
-		<div class="right" @click="goBack"><i class="fa fa-university" aria-hidden="true"></i></div>
+		<div class="right"><i class="fa fa-university" aria-hidden="true"></i></div>
 	</div>
 </template>
 
@@ -15,8 +15,8 @@
 			}
 		},
 		methods:{
-			goBack(){
-				this.$router.push({path:"/Lizi"})
+			goLogin(){
+				this.$router.push({path:"/login"})
 			}
 		}
 	}

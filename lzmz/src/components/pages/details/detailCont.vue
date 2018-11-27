@@ -5,8 +5,8 @@
 		<div class="pro_box">
 			<div class="pro_price">
 				<div class="pri_top">
-					<div class="price">￥{{price1}}</div>
-					<div class="buynum"><span>{{salesCount1}}</span>人已购买</div>
+					<div class="price">￥{{proData.saleprice}}</div>
+					<div class="buynum"><span>{{proData.buynum}}</span>人已购买</div>
 				</div>
 				<div class="desc">{{proData.desc}}</div>
 			</div>
@@ -16,7 +16,7 @@
 						<i class="fa fa-pause" aria-hidden="true"></i>
 						商品参数
 					</dt>
-					<dd><label>商品名称：</label><span>{{title1}}</span></dd>
+					<dd><label>商品名称：</label><span>{{proData.name}}</span></dd>
 					<dd><label>所属品牌：</label><span>{{proData.brand}}</span></dd>
 					<dd><label>产地：</label><span>{{proData.origin}}</span></dd>
 					<dd><label>适用肤质：</label><span>{{proData.face}}</span></dd>
@@ -92,6 +92,7 @@
 	import moveTop from '../../commons/moveTop.vue';
 	//购物袋
 	import buyBtn from './buyBtn.vue';
+
 	export default{
 		name:'detailCont',
 		components:{slideDetail,moveTop,buyBtn,detailHeader},
@@ -99,11 +100,7 @@
 			return {
 				proData:[],
 				list:[],
-				num:0,
-				id1:'',
-				price1:'',
-				salesCount1:"",
-				title1:""
+				num:0
 			}
 		},
 		methods:{
@@ -123,6 +120,9 @@
 				});
 			},
 			add(val){
+
+
+
 				this.num+=val;
 				let buyPro =  this.$qs.stringify({
 					id:this.proData.id,
@@ -130,31 +130,31 @@
 					size:this.proData.size,
 					price:this.proData.price,
 					imgpath:this.proData.littleurl,
-					buynum:1
+					  buynum:1
 				});
+
 				console.log(buyPro)
 				this.$axios({
 				    method: 'post',
 				    url:'/api/buyCar/addCar',
 				    data:buyPro
 				})
-				.then((res)=>{
-				    console.log(res);		
+				.then((docs)=>{
+				    console.log(docs);
+				  				
 				});	
+
+
+
+
 			}
 		},
 		created(){
 			this.getData();
-			let id=this.$route.params.id;
-			let price=this.$route.params.price;
-			let salesCount=this.$route.params.renshu;
-			let title=this.$route.params.title;
-			this.id1=id;
-			this.price1=price;
-			this.salesCount1=salesCount;
-			this.title1=title;
 		}
+
 	}
+
 </script>
 
 <style lang="less" scoped>
@@ -329,4 +329,8 @@
 	 		}
 	 	}
 	}
+
+
 </style>
+
+

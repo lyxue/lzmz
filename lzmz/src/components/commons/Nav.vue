@@ -1,14 +1,10 @@
 <template>
 	<div class="nav">
 		<ul>
-			<RouterLink v-for="(item,index) in navlist" 
+			<li v-for="(item,index) in navlist" 
 			:key='index'
-			active-class='red' 
 			@click="goPage(item.path)"
-			tag='li'
-			:to='item.path'
-			>{{item.name}}</RouterLink>
-			<!-- active-class='red' 页面激活时的使用类名 -->
+			>{{item.name}}</li>
 		</ul>
 	</div>
 	
@@ -27,8 +23,7 @@
 					{name:'洗发护发',path:'/meibai'},
 					{name:'补水保湿',path:'/baoshi'},
 					{name:'底妆隔离',path:'/geli'}
-					],
-				selInit:'丽子'
+					]
 			}
 		},
 		methods:{
@@ -58,7 +53,6 @@
 				.w(40);
 			}
 			li{
-				text-align:center;
 				float:left;
 				.fs(14);
 				.w(67);
@@ -66,8 +60,7 @@
 				.lh(44);
 				font-weight: bolder;
 				list-style:none;
-			}
-			.red{
+			}:hover{
 				color: #FF666B;
 				border-bottom: 3px solid #FF666B;
 			}

@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({ extended:false }));
 
 
 
-
 // 路由
 const goodsRouter = require('./router/goods.js');
 app.use('/goods',goodsRouter);

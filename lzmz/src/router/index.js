@@ -5,8 +5,7 @@ import VueRouter from 'vue-router';
  Vue.use(VueRouter)
 
 //详情页
-import detailCont from '../components/pages/details/detailCont'
-import SlideDetail from '../components/pages/details/slideDetail'
+import detailCont from '../components/pages/details/detailCont.vue'
 //购物车页面
 import buyCar from '../components/pages/details/buyCar.vue'
 
@@ -16,9 +15,8 @@ import Newpin from '../components/pages/list/newpin/newpin'
 import Meibai from '../components/pages/list/Meibai/Meibai' 
 import Baoshi from '../components/pages/list/Baoshi/Baoshi'    
 import Geli from '../components/pages/list/Geli/Geli'    
-import Login from '../components/pages/login/login'
-import Zhuce from '../components/pages/zhuce/zhuce'
 import Details from '../components/commons/Details'
+import Login from '../components/pages/login/login'
 
 Vue.use(VueRouter)
 
@@ -30,10 +28,8 @@ const routes=[
 		 {path:'/meibai',component: Meibai,name:'meibai'},
 		 {path:'/baoshi',component: Baoshi,name:'baoshi'},
 		 {path:'/geli',component: Geli,name:'geli'},
+		 {path:'/details/:id/:name/:picSmall',component:Details,name:'details'},
 		 {path:'/login',component:Login,name:'login'},
-		 {path:'/zhuce',component:Zhuce,name:'zhuce'},
-		 {path:'/details',component:Details,name:'details'},
-		 {path:'/slideDetail',component:SlideDetail,name:'slideDetail'},
 		 {path:'/detailCont',component:detailCont,name:'detailCont'},
 		 {path:'/buyCar',component:buyCar,name:'buyCar'}
 	 ]

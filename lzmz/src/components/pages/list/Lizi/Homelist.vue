@@ -52,8 +52,8 @@
 				text-align:center;
 				img{
 					display:block;
-					.w(73);
-					.h(47);
+					.w(35);
+					.h(35);
 					.padding(0,0,8px,30px);
 				}
 				span{

@@ -10,16 +10,16 @@
 					<i class="fa fa-commenting" aria-hidden="true"></i>
 				</div>
 			</div>
-			<div class="shop_list">
+			<div class="shop_list" v-for="(item,index) in list" >
 				<div class="list_Cont">
 					<div class="list_l">
 						<i class="fa fa-check-circle-o" aria-hidden="true"></i> 
-						<img src="">
+						<img :src="'https://images.weserv.nl/?url='+list[index].imgpath">
 					</div>
 					<div class="list_c">
-						<p class="title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
-						<p class="size">规格：<span>11111</span></p>
-						<p class="price">￥69.00</p>
+						<p class="title">{{list[index].title}}</p>
+						<p class="size">规格：<span>{{list[index].size}}</span></p>
+						<p class="price">￥{{list[index].price}}</p>
 					</div>
 					<div class="list_r">
 						<div>
@@ -27,7 +27,7 @@
 						</div>
 						<div class="numbox">
 							<span class="sub">-</span>
-							<span class="num">1</span>
+							<span class="num">{{list[index].buynum}}</span>
 							<span class="add">+</span>
 						</div>
 					</div>		
@@ -56,14 +56,23 @@
 		name:'buyCar',
 		data(){
 			return {
-
+				list:[]
 			}
 		},
 		methods:{
-
+			getData(){
+				this.$axios({
+					method :'post',
+					url:'/api/buyCar/findCar',
+					data:{}
+				}).then((res)=>{
+					console.log(res);
+					this.list = res.data.data;
+				})
+			}
 		},
 		created(){
-
+			this.getData();
 		}
 
 		

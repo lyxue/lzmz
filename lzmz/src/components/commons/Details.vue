@@ -1,6 +1,6 @@
 <template>
 	<div  class="details">
-		<img :src="'https://images.weserv.nl/?url='+imgurl"> 
+		{{name}}
 	</div>
 </template>
 
@@ -10,16 +10,14 @@
 		name:'Details',
 		data(){
 			return{
-				name:'这里是details组件',
-				imgurl:''
+				name:'这里是details组件'
 			}
 		},
 		methods:{
 		},
 		created(){
-			let img=this.$route.params.img;
-			console.log(img)
-			this.imgurl=img
+			let id=this.$route.params.id;
+			console.log(id)
 		}
 	}
 </script>

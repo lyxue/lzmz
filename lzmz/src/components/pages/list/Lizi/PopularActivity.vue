@@ -42,10 +42,8 @@
 	@import url("../../../../styls/main.less");
 	.PopularActivity{
 		.w(375);
-		text-align:center;
 		background:#F5F5F5;
 		p{
-			.padding(5,0,5,0);
 			.fs(20);
 			color:#333333;
 			display: inline-block;
@@ -57,8 +55,6 @@
 			display: inline-block;
 		}
 		div{
-			.padding(0,0,10,12);
-			padding-left: 12px;
 			img{
 				.w(353);
 				.h(252);
